@@ -11,11 +11,11 @@ namespace LanguageDictionary
     public class LanguageDictionary
     {
         
-        public LanguageDictionary(string languageFrom,string languageTo)
+        public LanguageDictionary(string languageFrom,string languageTo, string path)
         {
             var languageDictionary = new Dictionary<string, List<string>>();
             string jsonString = JsonSerializer.Serialize(languageDictionary);
-            File.WriteAllText($"{Environment.CurrentDirectory}/dictionaries/{languageFrom}-{languageTo}.json", jsonString);
+            File.WriteAllText(@$"{path}\{languageFrom}-{languageTo}.json", jsonString);
         }
     }
 }
