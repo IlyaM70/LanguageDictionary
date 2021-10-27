@@ -34,8 +34,15 @@ namespace LanguageDictionary
                 WriteIndented = true
             };
             string jsonString = JsonSerializer.Serialize(languageDictionary, options);
-            Console.WriteLine(jsonString);
+            //Console.WriteLine(jsonString);
             File.AppendAllText(@$"{path}\{file}", jsonString);
+        }
+
+        public static Dictionary<string, List<string>> Read (string filePath)
+        {
+            var jsonString = File.ReadAllText(filePath);
+            var dictionary = new Dictionary<string, List<string>>();
+            return dictionary = JsonSerializer.Deserialize<Dictionary<string, List<string>>>(jsonString);
         }
 
 

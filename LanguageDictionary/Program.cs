@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text.Encodings.Web;
+using System.Text.Json;
 
 namespace LanguageDictionary
 {
@@ -37,7 +39,7 @@ namespace LanguageDictionary
                     Console.WriteLine("Введите имя файла");
                     var file = Console.ReadLine();
                     var filePath = @$"{path}\{file}";
-                    Console.WriteLine(filePath);
+                    //Console.WriteLine(filePath);
 
                     Console.WriteLine("Напишите новое слово");
                     var word = Console.ReadLine();
@@ -65,6 +67,16 @@ namespace LanguageDictionary
 
                     
                 case "3":
+                    FileManager.GetFileList(path);
+                    Console.WriteLine("Введите имя файла");
+                    file = Console.ReadLine();
+                    filePath = @$"{path}\{file}";
+
+                    var dictionary = FileManager.Read(filePath);
+                    
+                    
+                    
+
                     break;
                 case "4":
                     break;
