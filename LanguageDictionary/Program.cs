@@ -130,7 +130,41 @@ namespace LanguageDictionary
                     break;
 
                 case "4":
+                    ///// get file
+                    FileManager.GetFileList(path);
+                    Console.WriteLine("Введите имя файла");
+                    file = Console.ReadLine();
+                    filePath = @$"{path}\{file}";
+                    
+
+                    //// get dictionary
+                    dictionary = FileManager.Read(filePath);
+
+                    Console.WriteLine("Введите слово");
+                    word = Console.ReadLine();
+
+                    Console.WriteLine("Выберите вариант");
+                    Console.WriteLine("1.Удалить слово");
+                    Console.WriteLine("2.Удалить перевод слова");
+                    choise = Console.ReadLine();
+
+
+                    switch (choise)
+                    {
+                        case "1":
+                            dictionary.Remove(word);
+                            break;
+
+                        case "2":
+                            dictionary.Remove(word);
+                            translations = new List<string>();
+                            dictionary.Add(word, translations);
+                            break;
+                    }
+
+                    FileManager.Replace(file, path, dictionary);
                     break;
+
                 case "5":
                     break;
                 case "6":
