@@ -166,8 +166,55 @@ namespace LanguageDictionary
                     break;
 
                 case "5":
+
+                    FileManager.GetFileList(path);
+                    Console.WriteLine("Введите имя файла");
+                    file = Console.ReadLine();
+                    filePath = @$"{path}\{file}";
+
+                    dictionary = FileManager.Read(filePath);
+
+
+                    Console.WriteLine("Введите слово");
+                    word = Console.ReadLine();
+                    translations = new List<string>();
+                    translations = dictionary.GetValueOrDefault(word);
+
+                    Console.WriteLine("Перевод:");
+                    foreach (var translate in translations)
+                    {
+                        Console.WriteLine(translate);
+                    }
+
                     break;
                 case "6":
+
+                    FileManager.GetFileList(path);
+                    Console.WriteLine("Введите имя файла");
+                    file = Console.ReadLine();
+                    filePath = @$"{path}\{file}";
+
+                    dictionary = FileManager.Read(filePath);
+
+
+                    Console.WriteLine("Введите слово");
+                    word = Console.ReadLine();
+                    translations = new List<string>();
+                    translations = dictionary.GetValueOrDefault(word);
+
+                    Console.WriteLine("Перевод:");
+                    foreach (var translate in translations)
+                    {
+                        Console.WriteLine(translate);
+                    }
+                   
+                    File.WriteAllText($@"{Environment.CurrentDirectory}/перевод.txt", $"{word}:");
+                    foreach (var translate in translations)
+                    {
+                        File.AppendAllText($@"{Environment.CurrentDirectory}/перевод.txt", $"{translate}, ");
+                    }
+                    Console.WriteLine("Перевод записан в перевод.txt");
+
                     break;
                 case "0":
                     break;
