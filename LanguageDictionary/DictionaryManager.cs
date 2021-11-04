@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
+
 
 namespace LanguageDictionary
 {
@@ -29,5 +28,26 @@ namespace LanguageDictionary
             }
             return dictionary;
         }
+
+        public static void FindTranslate( Dictionary<string, List<string>> dictionary, bool isExporting)
+        {
+            var word = ConsoleApp.GetWord();
+            var translations = new List<string>();
+            translations = dictionary.GetValueOrDefault(word);
+            ConsoleApp.PrintTranslate(translations);
+
+            if (isExporting == true)
+            {
+                File.WriteAllText($@"{Environment.CurrentDirectory}/перевод.txt", $"{word}:");
+                foreach (var translate in translations)
+                {
+                    File.AppendAllText($@"{Environment.CurrentDirectory}/перевод.txt", $"{translate}, ");
+                }
+                Console.WriteLine("Перевод записан в перевод.txt");
+            }
+            
+        }
+
+
     }
 }

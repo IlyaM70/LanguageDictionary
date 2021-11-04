@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace LanguageDictionary
 {
@@ -70,5 +68,33 @@ namespace LanguageDictionary
             var translate = Console.ReadLine();
             return translate;
         }
+
+        public static string Menu2(bool replace)
+        {
+            var placeholder="";
+            if (replace == true)
+            {
+                placeholder = "Заменить";
+            }
+            else
+            {
+                placeholder = "Удалить";
+            }
+            Console.WriteLine("Выберите вариант");
+            Console.WriteLine($"1.{placeholder} слово");
+            Console.WriteLine($"2.{placeholder} перевод слова");
+            var choise = Console.ReadLine();
+            return choise;
+        }
+
+        public static void PrintTranslate(List<string> translations)
+        {
+            Console.WriteLine("Перевод:");
+            foreach (var translate in translations)
+            {
+                Console.WriteLine(translate);
+            }
+        }
+
     }
 }
